@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, GymTrackerActivity!</string>
+    <string name="app_name">GymTracker</string>
+    <string name="exercises">Exercises For</string>
+    <string name="pickDate">Pick Date</string>
+
+</resources>
