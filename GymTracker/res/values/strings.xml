@@ -5,5 +5,6 @@
     <string name="app_name">GymTracker</string>
     <string name="exercises">Exercises For</string>
     <string name="pickDate">Pick Date</string>
+    <string name="eraseAll">Erase All Data</string>
 
 </resources>

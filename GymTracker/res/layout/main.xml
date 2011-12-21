@@ -5,25 +5,11 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5px" >
-
-        <Button
-            android:id="@+id/pickDateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pickDate" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5px" >
-
+
         <TextView
             android:id="@+id/exerciseText"
             android:layout_width="wrap_content"
@@ -31,15 +17,26 @@
             android:layout_marginRight="10px"
             android:text="@string/exercises"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
         <TextView
             android:id="@+id/dateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10px"
-            android:layout_weight="0.08"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/pickDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pickDate" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eraseAll" />
 
     </LinearLayout>
 
@@ -47,7 +44,15 @@
         android:id="@+id/exerciseSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
         <!-- Preview: listitem=@android:layout/simple_spinner_dropdown_item -->
     </Spinner>
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.89" >
+    </TableLayout>
 
 </LinearLayout>
