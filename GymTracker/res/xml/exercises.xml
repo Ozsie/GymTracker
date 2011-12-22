@@ -1,0 +1,12 @@
+<GymTrackerExercises>
+	<Exercise name="Cross Trainer">
+		<Field name="Hours" type="integer" unit="h"/>
+		<Field name="Minutes" type="integer" unit="min"/>
+		<Field name="Seconds" type="integer" unit="s"/>
+		<Field name="Distance" type="double" unit="km"/>
+	</Exercise>
+	<Exercise name="Situps (manual)">
+		<Field name="Sets" type="integer" unit=""/>
+		<Field name="Reps" type="integer" unit=""/>
+	</Exercise>
+</GymTrackerExercises>
