@@ -83,10 +83,10 @@ public class GymTrackerActivity extends Activity {
 		});
 	}
 
-	private void setupDatePicker() {
-		final Button pickDateButton = (Button) findViewById(R.id.pickDateButton);
-		pickDateButton.setOnClickListener(new OnClickListener() {
-
+	private void setupDatePicker() {		
+		final TextView dateText = (TextView) findViewById(R.id.dateText);
+		dateText.setOnClickListener(new OnClickListener() {
+			
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
 			}
@@ -124,6 +124,7 @@ public class GymTrackerActivity extends Activity {
 				Log.d(TAG, "Nothing was selected");
 			}
 		});
+		
 	}
 
 	protected void buildExerciseGui() {
@@ -166,6 +167,9 @@ public class GymTrackerActivity extends Activity {
 			if (type.equals(Exercise.INTEGER)) {
 				buildIntegerUI(exData, dataExists, tempFinalExData, fieldName, row);
 			}
+			if (type.equals(Exercise.STRING)) {
+				buildStringUI(exData, dataExists, tempFinalExData, fieldName, row);
+			}
 
 			TextView txt = new TextView(this, null, android.R.style.TextAppearance_Large);
 			txt.setText(new StringBuilder().append(unit));
@@ -184,6 +188,38 @@ public class GymTrackerActivity extends Activity {
 			}
 		});
 		row.addView(save);
+	}
+
+	private void buildStringUI(ExerciseData exData, boolean dataExists,
+			final ExerciseData tempFinalExData, final String fieldName, TableRow row) {
+		EditText text = new EditText(this);
+
+		text.addTextChangedListener(new TextWatcher() {
+			private CharSequence currentText;
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				currentText = s;
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			public void afterTextChanged(Editable s) {
+				Log.d(TAG, "I: writing " + currentText.toString());
+				tempFinalExData.addValue(fieldName, currentText.toString());
+			}
+		});
+
+		row.addView(text);
+		if (dataExists) {
+			if (exData.getValue(fieldName) != null) {
+				String data = exData.getValue(fieldName).toString();
+				Log.d(TAG, "Data was " + data);
+				text.setText(new StringBuilder().append(data));
+			}
+		}
 	}
 
 	private void buildIntegerUI(ExerciseData exData, boolean dataExists,
@@ -283,6 +319,7 @@ public class GymTrackerActivity extends Activity {
 	private void updateDateText() {
 		TextView text = (TextView) findViewById(R.id.dateText);
 		text.setText(new StringBuilder().append(mDay).append("/").append(mMonth + 1).append("/").append(mYear));
+		buildExerciseGui();
 	}
 
 	protected android.app.Dialog onCreateDialog(int id) {

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 import se.djupfeldt.oscar.gymtracker.GymTrackerActivity;
@@ -23,10 +24,10 @@ public class ExerciseHandler {
 	
 	private Exercise selectedExercise;
 	
-	private HashMap<String, Exercise> exercises;
+	private LinkedHashMap<String, Exercise> exercises;
 	
 	private ExerciseHandler() {
-		exercises = new HashMap<String, Exercise>();
+		exercises = new LinkedHashMap<String, Exercise>();
 	}
 	
 	public static ExerciseHandler getInstance() {
@@ -41,6 +42,9 @@ public class ExerciseHandler {
 	
 	public void addExercise(Exercise ex) {
 		exercises.put(ex.getName(), ex);
+		
+		if (selectedExercise == null)
+			selectedExercise = ex;
 	}
 	
 	public LinkedList<CharSequence> getExerciseNames() {
@@ -65,6 +69,9 @@ public class ExerciseHandler {
 	}
 
 	public ExerciseData readData(Context context, Exercise ex, int year, int month, int day) {
+		if (ex == null)
+			return null;
+		
 		String fileName = context.getFilesDir().getAbsolutePath() + "/" + ex.getName() + "." + year + "." + month + "." + day + FILE_ENDING;
 		File file = new File(fileName);
 		if (!file.exists())
@@ -89,7 +96,7 @@ public class ExerciseHandler {
 						} else if (type.equals(Exercise.INTEGER)) {
 							data.addValue(name, Integer.parseInt(value));
 						} else {
-							data.addValue(name, type);
+							data.addValue(name, value);
 						}
 					}
 				}

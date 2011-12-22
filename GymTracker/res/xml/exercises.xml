@@ -1,33 +1,196 @@
 <GymTrackerExercises>
 	<Exercise name="Cross Trainer">
-		<Field name="Seconds" type="integer" unit="s"/>
-		<Field name="Minutes" type="integer" unit="min"/>
-		<Field name="Hours" type="integer" unit="h"/>
-		<Field name="Distance" type="double" unit="km"/>
-		<Field name="Comment" type="string" unit="" />
+		<Field name="Seconds" type="integer" unit="s" position="4"/>
+		<Field name="Minutes" type="integer" unit="min" position="3"/>
+		<Field name="Hours" type="integer" unit="h" position="2"/>
+		<Field name="Distance" type="double" unit="km" position="1"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
 	</Exercise>
-	<Exercise name="Promenad">
-		<Field name="Seconds" type="integer" unit="s"/>
-		<Field name="Minutes" type="integer" unit="min"/>
-		<Field name="Hours" type="integer" unit="h"/>
-		<Field name="Distance" type="double" unit="km"/>
-		<Field name="Comment" type="string" unit="" />
+	<Exercise name="Walking">
+		<Field name="Seconds" type="integer" unit="s" position="4"/>
+		<Field name="Minutes" type="integer" unit="min" position="3"/>
+		<Field name="Hours" type="integer" unit="h" position="2"/>
+		<Field name="Distance" type="double" unit="km" position="1"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
 	</Exercise>
-	<Exercise name="Joggning">
-		<Field name="Seconds" type="integer" unit="s"/>
-		<Field name="Minutes" type="integer" unit="min"/>
-		<Field name="Hours" type="integer" unit="h"/>
-		<Field name="Distance" type="double" unit="km"/>
-		<Field name="Comment" type="string" unit="" />
+	<Exercise name="Jogging">
+		<Field name="Seconds" type="integer" unit="s" position="4"/>
+		<Field name="Minutes" type="integer" unit="min" position="3"/>
+		<Field name="Hours" type="integer" unit="h" position="2"/>
+		<Field name="Distance" type="double" unit="km" position="1"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
 	</Exercise>
-	<Exercise name="Situps">
-		<Field name="Reps" type="integer" unit=""/>
-		<Field name="Sets" type="integer" unit=""/>
-		<Field name="Comment" type="string" unit="" />
+	<Exercise name="Crunch">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
 	</Exercise>
-	<Exercise name="Armhävningar">
-		<Field name="Reps" type="integer" unit=""/>
-		<Field name="Sets" type="integer" unit=""/>
-		<Field name="Comment" type="string" unit="" />
+	<Exercise name="Push ups">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Squats">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Leg press">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Deadlift">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Leg extension">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Wall sit">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Leg curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Standing calf raise">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Seated calf raise">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Bench press">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Chest fly">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Pulldown">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Pullup">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Bent-over row">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Upright row">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Shoulder press">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Military press">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Lateral raise">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Pushdown">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Triceps extension">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Preacher curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Standing barbell curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Alternating rotating dumbbell curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Hammer curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Zottman curl">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Leg raise">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Back extension">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
+	</Exercise>
+	<Exercise name="Good morning">
+		<Field name="Reps" type="integer" unit="" position="2"/>
+		<Field name="Sets" type="integer" unit="" position="1"/>
+		<Field name="Weight" type="integer" unit="kg" position="3"/>
+		<Field name="Comment" type="string" unit="" position="0"/>
 	</Exercise>
 </GymTrackerExercises>

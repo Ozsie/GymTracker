@@ -1,6 +1,7 @@
 package se.djupfeldt.oscar.gymtracker.exercises;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import se.djupfeldt.oscar.gymtracker.GymTrackerActivity;
 
@@ -10,8 +11,9 @@ public class Exercise implements Comparable<Exercise> {
 	public static final String TIME = "time";
 	public static final String DOUBLE = "double";
 	public static final String INTEGER = "integer";
+	public static final String STRING = "string";
 	protected String name;
-	private HashMap<String, Field> fields = new HashMap<String, Field>();
+	private LinkedHashMap<String, Field> fields = new LinkedHashMap<String, Field>();
 	
 	public Exercise(String name) {
 		this.name = name;
@@ -30,6 +32,8 @@ public class Exercise implements Comparable<Exercise> {
 			Log.e(GymTrackerActivity.TAG, "Exercise " + name + " already contains a field named " + name);
 			return;
 		}
+		
+		Log.d(GymTrackerActivity.TAG, "Adding field + " + field + " to " + name);
 		fields.put(field.getName(), field);
 	}
 	
