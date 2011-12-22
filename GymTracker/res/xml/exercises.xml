@@ -1,12 +1,33 @@
 <GymTrackerExercises>
 	<Exercise name="Cross Trainer">
-		<Field name="Hours" type="integer" unit="h"/>
-		<Field name="Minutes" type="integer" unit="min"/>
 		<Field name="Seconds" type="integer" unit="s"/>
+		<Field name="Minutes" type="integer" unit="min"/>
+		<Field name="Hours" type="integer" unit="h"/>
 		<Field name="Distance" type="double" unit="km"/>
+		<Field name="Comment" type="string" unit="" />
 	</Exercise>
-	<Exercise name="Situps (manual)">
-		<Field name="Sets" type="integer" unit=""/>
+	<Exercise name="Promenad">
+		<Field name="Seconds" type="integer" unit="s"/>
+		<Field name="Minutes" type="integer" unit="min"/>
+		<Field name="Hours" type="integer" unit="h"/>
+		<Field name="Distance" type="double" unit="km"/>
+		<Field name="Comment" type="string" unit="" />
+	</Exercise>
+	<Exercise name="Joggning">
+		<Field name="Seconds" type="integer" unit="s"/>
+		<Field name="Minutes" type="integer" unit="min"/>
+		<Field name="Hours" type="integer" unit="h"/>
+		<Field name="Distance" type="double" unit="km"/>
+		<Field name="Comment" type="string" unit="" />
+	</Exercise>
+	<Exercise name="Situps">
 		<Field name="Reps" type="integer" unit=""/>
+		<Field name="Sets" type="integer" unit=""/>
+		<Field name="Comment" type="string" unit="" />
+	</Exercise>
+	<Exercise name="Armhävningar">
+		<Field name="Reps" type="integer" unit=""/>
+		<Field name="Sets" type="integer" unit=""/>
+		<Field name="Comment" type="string" unit="" />
 	</Exercise>
 </GymTrackerExercises>
