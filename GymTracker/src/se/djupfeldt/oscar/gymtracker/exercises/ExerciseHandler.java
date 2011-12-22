@@ -132,7 +132,7 @@ public class ExerciseHandler {
 				
 				sb.append(field).append(DELIMITER);
 				sb.append(data.getValue(field)).append(DELIMITER);
-				sb.append(ex.getFields().get(field));
+				sb.append(ex.getFields().get(field).getType());
 				sb.append("\n");
 				
 				Log.d(GymTrackerActivity.TAG, "Writing " + sb.toString());
