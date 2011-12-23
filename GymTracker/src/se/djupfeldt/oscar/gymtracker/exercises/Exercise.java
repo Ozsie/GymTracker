@@ -1,5 +1,6 @@
 package se.djupfeldt.oscar.gymtracker.exercises;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -12,8 +13,11 @@ public class Exercise implements Comparable<Exercise> {
 	public static final String DOUBLE = "double";
 	public static final String INTEGER = "integer";
 	public static final String STRING = "string";
+	
 	protected String name;
 	private LinkedHashMap<String, Field> fields = new LinkedHashMap<String, Field>();
+	
+	private URL infoLink = null;
 	
 	public Exercise(String name) {
 		this.name = name;
@@ -37,12 +41,20 @@ public class Exercise implements Comparable<Exercise> {
 		fields.put(field.getName(), field);
 	}
 	
+	public void setInfoLink(URL infoLink) {
+		this.infoLink = infoLink;
+	}
+	
 	public HashMap<String, Field> getFields() {
 		return fields;
 	}
 	
 	public Field getField(String name) {
 		return fields.get(name);
+	}
+	
+	public URL getInfoLink() {
+		return infoLink;
 	}
 	
 	@Override

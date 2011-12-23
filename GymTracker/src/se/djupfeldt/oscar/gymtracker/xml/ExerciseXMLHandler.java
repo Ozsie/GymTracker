@@ -1,6 +1,8 @@
 package se.djupfeldt.oscar.gymtracker.xml;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -21,19 +23,21 @@ import android.util.Log;
 public class ExerciseXMLHandler {
 	private static final String EXERCISE_TAG = "Exercise";
 	private static final String FIELD_TAG = "Field";
+	private static final String INFO_LINK_TAG = "InfoLink";
 	private static final String EXERCISE_NAME_ATTRIBUTE = "name";
 	private static final String FIELD_NAME_ATTRIBUTE = "name";
 	private static final String FIELD_TYPE_ATTRIBUTE = "type";
 	private static final String FIELD_UNIT_ATTRIBUTE = "unit";
 	private static final String FIELD_POSITION_ATTRIBUTE = "position";
+	private static final String INFO_LINK_URL_ATTRIBUTE = "url";
 
 	public static void parse(Context context) {
 		XmlResourceParser xml = context.getResources().getXml(R.xml.exercises);
-		
+
 		try {
 			xml.next();
 			int eventType = xml.getEventType();
-			
+
 			String nodeValue = "";
 			Exercise ex = null;
 			ExerciseHandler exHandler = ExerciseHandler.getInstance();
@@ -45,14 +49,14 @@ public class ExerciseXMLHandler {
 				else if (eventType == XmlPullParser.START_TAG){
 					nodeValue = xml.getName();
 					Log.i(GymTrackerActivity.TAG, "Node: " + nodeValue);
-					
+
 					if (nodeValue.equals(EXERCISE_TAG)) {
 						String name = xml.getAttributeValue(null, EXERCISE_NAME_ATTRIBUTE);
 						ex = new Exercise(name);
 						fields = new LinkedList<Field>();
 						exercises.add(ex);
 					}
-					
+
 					if (nodeValue.equals(FIELD_TAG)) {
 						if (xml.getAttributeCount() < 2) {
 							Log.e(GymTrackerActivity.TAG, "Malformed XML: " + xml.toString());
@@ -62,13 +66,25 @@ public class ExerciseXMLHandler {
 						String fieldType = xml.getAttributeValue(null, FIELD_TYPE_ATTRIBUTE);
 						String fieldUnit = xml.getAttributeValue(null, FIELD_UNIT_ATTRIBUTE);
 						int fieldPosition = xml.getAttributeIntValue(null, FIELD_POSITION_ATTRIBUTE, 0);
-						
+
 						Log.d(GymTrackerActivity.TAG, "Found field " + fieldName + ", " + fieldType + ", " + fieldUnit + ", " + fieldPosition);
-						
+
 						if (ex != null) {
 							Field field = new Field(fieldName, fieldUnit, fieldType, fieldPosition);
 							Log.d(GymTrackerActivity.TAG, "Adding field " + fieldName + " to temp list");
 							fields.add(field);
+						}
+					}
+
+					if (nodeValue.equals(INFO_LINK_TAG)) {
+						String url = xml.getAttributeValue(null, INFO_LINK_URL_ATTRIBUTE);
+						try {
+							URL infoLink = new URL(url);
+							Log.d(GymTrackerActivity.TAG, "ex = null : " + (ex == null));
+							ex.setInfoLink(infoLink);
+						} catch (MalformedURLException e) {
+							Log.e(GymTrackerActivity.TAG, "Malformed URL in " + ex + ": " + url);
+							return;
 						}
 					}
 				} else if (eventType == XmlPullParser.END_TAG) {
@@ -80,23 +96,23 @@ public class ExerciseXMLHandler {
 						for (Field f : fields) {
 							ex.addField(f);
 						}
-						
+
 						fields = null;
 						ex = null;
 					}
 				} else if (eventType == XmlPullParser.TEXT) {
-					
+
 				}
-				
+
 				eventType = xml.next();
 			}
-			
+
 			Collections.sort(exercises);
-			
+
 			for (Exercise exercise : exercises) {
 				exHandler.addExercise(exercise);
 			}
-			
+
 			Log.d(GymTrackerActivity.TAG, exHandler.getExercises().toString());
 		} catch (XmlPullParserException e) {
 			// TODO Auto-generated catch block
@@ -105,7 +121,7 @@ public class ExerciseXMLHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 }

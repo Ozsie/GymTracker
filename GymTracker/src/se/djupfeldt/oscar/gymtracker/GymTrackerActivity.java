@@ -1,5 +1,6 @@
 package se.djupfeldt.oscar.gymtracker;
 
+import java.net.URL;
 import java.util.Calendar;
 import java.util.LinkedList;
 
@@ -13,6 +14,8 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -188,6 +191,21 @@ public class GymTrackerActivity extends Activity {
 			}
 		});
 		row.addView(save);
+		
+		final URL infoLink = ex.getInfoLink();
+		if (infoLink != null) {
+			Button infoButton = new Button(this);
+			infoButton.setText("Exercise Info");
+			infoButton.setOnClickListener(new OnClickListener() {
+				
+				public void onClick(View v) {
+					Intent i = new Intent(Intent.ACTION_VIEW);
+					i.setData(Uri.parse(infoLink.toString()));
+					startActivity(i);
+				}
+			});
+			row.addView(infoButton);
+		}
 	}
 
 	private void buildStringUI(ExerciseData exData, boolean dataExists,

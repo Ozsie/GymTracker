@@ -5,6 +5,7 @@
 		<Field name="Hours" type="integer" unit="h" position="2"/>
 		<Field name="Distance" type="double" unit="km" position="1"/>
 		<Field name="Comment" type="string" unit="" position="0"/>
+		<InfoLink url="http://en.wikipedia.org/wiki/Cross_trainer" />
 	</Exercise>
 	<Exercise name="Walking">
 		<Field name="Seconds" type="integer" unit="s" position="4"/>
