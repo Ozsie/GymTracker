@@ -8,7 +8,6 @@ import se.djupfeldt.oscar.gymtracker.exercises.Exercise;
 import se.djupfeldt.oscar.gymtracker.exercises.ExerciseData;
 import se.djupfeldt.oscar.gymtracker.exercises.ExerciseHandler;
 import se.djupfeldt.oscar.gymtracker.exercises.Field;
-import se.djupfeldt.oscar.gymtracker.exercises.Time;
 import se.djupfeldt.oscar.gymtracker.xml.ExerciseXMLHandler;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -21,6 +20,9 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -76,14 +78,6 @@ public class GymTrackerActivity extends Activity {
 		setupDatePicker();
 
 		setupSpinner();
-
-		final Button eraseAll = (Button) findViewById(R.id.button1);
-		eraseAll.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				exHandler.clearAllData(thisContext);
-			}
-		});
 	}
 
 	private void setupDatePicker() {		
@@ -184,7 +178,6 @@ public class GymTrackerActivity extends Activity {
 		Button save = new Button(this);
 		save.setText("Save Exercise");
 		save.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View v) {
 				Log.d(TAG, tempFinalExData.getValues().toString());
 				exHandler.writeData(thisContext, exHandler.getSelectedExercise(), mYear, mMonth, mDay, tempFinalExData);
@@ -347,4 +340,26 @@ public class GymTrackerActivity extends Activity {
 		}
 		return null;
 	};
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_menu, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.eraseAllData:
+			exHandler.clearAllData(thisContext);
+			return true;
+		case R.id.eraseCurrentData:
+			exHandler.clearForCurrentDate(thisContext, mYear, mMonth, mDay, exHandler.getSelectedExercise());
+			buildExerciseGui();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 }

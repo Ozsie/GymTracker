@@ -172,4 +172,10 @@ public class ExerciseHandler {
 			}
 		}
 	}
+
+	public boolean clearForCurrentDate(Context context, int year, int month, int day, Exercise ex) {
+		String filePath = context.getFilesDir().getAbsolutePath() + "/" + ex.getName() + "." + year + "." + month + "." + day + FILE_ENDING;
+		File file = new File(filePath);
+		return file.delete();
+	}
 }
