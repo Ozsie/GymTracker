@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/showGraph"
+          android:title="@string/showGraphForExercise" />
     <item android:id="@+id/eraseCurrentData"
           android:title="@string/eraseCurrent" />
     <item android:id="@+id/eraseAllData"

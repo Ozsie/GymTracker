@@ -12,7 +12,6 @@ import se.djupfeldt.oscar.gymtracker.xml.ExerciseXMLHandler;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,6 +37,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
+import android.widget.Toast;
 
 public class GymTrackerActivity extends Activity {
 	public static final String TAG =  "GymTrackerDebug";
@@ -50,8 +50,6 @@ public class GymTrackerActivity extends Activity {
 	private int mDay;
 
 	private ExerciseHandler exHandler;
-
-	private Context thisContext;
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new OnDateSetListener() {
 
@@ -68,8 +66,6 @@ public class GymTrackerActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		thisContext = this;
 
 		createExercises();
 
@@ -180,7 +176,8 @@ public class GymTrackerActivity extends Activity {
 		save.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Log.d(TAG, tempFinalExData.getValues().toString());
-				exHandler.writeData(thisContext, exHandler.getSelectedExercise(), mYear, mMonth, mDay, tempFinalExData);
+				exHandler.writeData(GymTrackerActivity.this, exHandler.getSelectedExercise(), mYear, mMonth, mDay, tempFinalExData);
+				Toast.makeText(GymTrackerActivity.this, "Saving exercise...", Toast.LENGTH_SHORT).show();
 			}
 		});
 		row.addView(save);
@@ -352,12 +349,16 @@ public class GymTrackerActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.eraseAllData:
-			exHandler.clearAllData(thisContext);
+			exHandler.clearAllData(GymTrackerActivity.this);
 			return true;
 		case R.id.eraseCurrentData:
-			exHandler.clearForCurrentDate(thisContext, mYear, mMonth, mDay, exHandler.getSelectedExercise());
+			exHandler.clearForCurrentDate(GymTrackerActivity.this, mYear, mMonth, mDay, exHandler.getSelectedExercise());
 			buildExerciseGui();
 			return true;
+		case R.id.showGraph:
+			Intent intent = new Intent(this, GraphActivity.class);
+			intent.putExtra("Exercise", exHandler.getSelectedExercise().getName());
+			startActivity(intent);
 		default:
 			return super.onOptionsItemSelected(item);
 		}
