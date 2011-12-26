@@ -44,14 +44,6 @@ public class GraphActivity extends Activity {
 	private Button mAdd;
 	private GraphicalView mChartView;
 	
-	private int mFromDay;
-	private int mFromMonth;
-	private int mFromYear;
-
-	private int mToYear;
-	private int mToMonth;
-	private int mToDay;
-	
 	private Exercise currentExercise;
 	private String selectedField = null;
 	
@@ -78,11 +70,15 @@ public class GraphActivity extends Activity {
 		mRenderer.setChartTitleTextSize(20);
 		mRenderer.setLabelsTextSize(15);
 		mRenderer.setLegendTextSize(15);
-		mRenderer.setMargins(new int[] { 20, 30, 15, 0 });
+		mRenderer.setMargins(new int[] { 40, 30, 15, 40 });
 		mRenderer.setZoomButtonsVisible(true);
 		mRenderer.setPointSize(10);
-		mRenderer.setXTitle("Time");
-		mRenderer.setYTitle(selectedField);
+		mRenderer.setXTitle("Date");
+		String unit = " (" + currentExercise.getField(selectedField).getUnit() + ")";
+		Log.d(GymTrackerActivity.TAG, unit);
+		if (unit.equals(" ()"))
+			unit = "";
+		mRenderer.setYTitle(selectedField + unit);
 
 		String seriesTitle = exercise + ", " + selectedField;
 		mCurrentSeries = new XYSeries(seriesTitle);
@@ -96,17 +92,20 @@ public class GraphActivity extends Activity {
 		
 		LinkedList<ExerciseData> exDataList = ExerciseHandler.getInstance().readAllData(this, currentExercise);
 		for (int i = 0; i < exDataList.size(); i++) {
+			ExerciseData data = exDataList.get(i);
 			Log.d(GymTrackerActivity.TAG, "Field: " + selectedField);
-			Object value = exDataList.get(i).getValue(selectedField);
+			Object value = data.getValue(selectedField);
 			Log.d(GymTrackerActivity.TAG, "Instance of " + selectedField + " " + value.getClass());
 			if (value instanceof Integer) {
-				Log.d(GymTrackerActivity.TAG, "Adding " + i + ", " + (Integer)exDataList.get(i).getValue(selectedField));
-				mCurrentSeries.add(i, (Integer)exDataList.get(i).getValue(selectedField));
+				Log.d(GymTrackerActivity.TAG, "Adding " + i + ", " + (Integer) data.getValue(selectedField));
+				mCurrentSeries.add(i, (Integer) data.getValue(selectedField));
 			}
 			if (value instanceof Double) {
-				mCurrentSeries.add(i, (Integer)exDataList.get(i).getValue(selectedField));
+				mCurrentSeries.add(i, (Integer) data.getValue(selectedField));
 			}
+			mRenderer.addXTextLabel(i, data.getYear() + "." + data.getMonth() + "." + data.getDay());
 		}
+		mRenderer.setXLabels(0);
 		
 		if (mChartView != null) {
 			mChartView.repaint();
@@ -132,8 +131,12 @@ public class GraphActivity extends Activity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Log.d(GymTrackerActivity.TAG, ((Spinner) arg0).getSelectedItem().toString());
 				String name = ((Spinner) arg0).getSelectedItem().toString();
+				String unit = " (" + currentExercise.getField(selectedField).getUnit() + ")";
+				Log.d(GymTrackerActivity.TAG, unit);
+				if (unit.equals(" ()"))
+					unit = "";
 				selectedField = name;
-				mRenderer.setYTitle(selectedField);
+				mRenderer.setYTitle(selectedField + unit);
 				mChartView.repaint();
 			}
 

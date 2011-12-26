@@ -7,4 +7,5 @@
     <string name="clickPickDate">Click to pick date</string>
 	<string name="eraseCurrent">Erase Data for Current Exercise</string>
 	<string name="showGraphForExercise">Exercise Graph</string>
+	<string name="plotText">Plot:</string>
 </resources>

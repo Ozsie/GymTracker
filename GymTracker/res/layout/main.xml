@@ -12,7 +12,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -24,7 +24,7 @@
                     android:id="@+id/exerciseText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10px"
+                    android:layout_marginRight="10dp"
                     android:text="@string/exercises"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -32,7 +32,7 @@
                     android:id="@+id/dateText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10px"
+                    android:layout_marginRight="10dp"
                     android:text="@string/clickPickDate"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
@@ -51,9 +51,9 @@
                 <TableLayout
                     android:id="@+id/tableLayout1"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10px"
-                    android:layout_marginRight="10px"
+                    android:layout_height="0dip"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="0.89"
                     android:stretchColumns="1" >
                 </TableLayout>
@@ -67,7 +67,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="5px" >
+        android:padding="5dp" >
 
     </LinearLayout>
 

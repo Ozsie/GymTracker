@@ -9,8 +9,7 @@
         android:id="@+id/exerciseGraphText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10px"
-        android:text="Large Text"
+        android:layout_marginLeft="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -23,14 +22,14 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
-            android:text="Plot:"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/plotText"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Spinner
             android:id="@+id/plotSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
