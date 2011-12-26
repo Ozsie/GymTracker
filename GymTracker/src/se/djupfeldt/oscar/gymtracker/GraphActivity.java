@@ -39,9 +39,6 @@ public class GraphActivity extends Activity {
 	private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
 	private XYSeries mCurrentSeries;
 	private XYSeriesRenderer mCurrentRenderer;
-	private String mDateFormat;
-	private Button mNewSeries;
-	private Button mAdd;
 	private GraphicalView mChartView;
 	
 	private Exercise currentExercise;
@@ -88,8 +85,17 @@ public class GraphActivity extends Activity {
 		mRenderer.addSeriesRenderer(mCurrentRenderer);
 		mCurrentRenderer.setPointStyle(PointStyle.CIRCLE);
 		mCurrentRenderer.setFillPoints(true);
-
+		mCurrentRenderer.setLineWidth(2);
 		
+		populateDataset();
+		
+		if (mChartView != null) {
+			mChartView.repaint();
+		}
+	}
+
+	private void populateDataset() {
+		mCurrentSeries.clear();
 		LinkedList<ExerciseData> exDataList = ExerciseHandler.getInstance().readAllData(this, currentExercise);
 		for (int i = 0; i < exDataList.size(); i++) {
 			ExerciseData data = exDataList.get(i);
@@ -106,10 +112,6 @@ public class GraphActivity extends Activity {
 			mRenderer.addXTextLabel(i, data.getYear() + "." + data.getMonth() + "." + data.getDay());
 		}
 		mRenderer.setXLabels(0);
-		
-		if (mChartView != null) {
-			mChartView.repaint();
-		}
 	}
 
 	private void setupFieldPicker() {
@@ -137,6 +139,7 @@ public class GraphActivity extends Activity {
 					unit = "";
 				selectedField = name;
 				mRenderer.setYTitle(selectedField + unit);
+				populateDataset();
 				mChartView.repaint();
 			}
 
@@ -162,17 +165,10 @@ public class GraphActivity extends Activity {
 
 				public void onClick(View v) {
 					SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
-					double[] xy = mChartView.toRealPoint(0);
-					if (seriesSelection == null) {
-						Toast.makeText(GraphActivity.this, "No chart element was clicked", Toast.LENGTH_SHORT)
-						.show();
-					} else {
-						Toast.makeText(
-								GraphActivity.this,
-								"Chart element in series index " + seriesSelection.getSeriesIndex()
-								+ " data point index " + seriesSelection.getPointIndex() + " was clicked"
-								+ " closest point value X=" + seriesSelection.getXValue() + ", Y=" + seriesSelection.getValue()
-								+ " clicked point value X=" + (float) xy[0] + ", Y=" + (float) xy[1], Toast.LENGTH_SHORT).show();
+					if (seriesSelection != null) {
+						Toast.makeText(GraphActivity.this, currentExercise.getName() + ", " +
+								mRenderer.getXTextLabel(seriesSelection.getXValue()) + ": " +
+								seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
 					}
 				}
 			});

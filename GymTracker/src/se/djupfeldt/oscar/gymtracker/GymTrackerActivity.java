@@ -250,7 +250,12 @@ public class GymTrackerActivity extends Activity {
 
 			public void afterTextChanged(Editable s) {
 				Log.d(TAG, "I: writing " + currentText.toString());
-				tempFinalExData.addValue(fieldName, Integer.parseInt(currentText.toString()));
+				if (currentText.toString() != "") {
+					try {
+						tempFinalExData.addValue(fieldName, Integer.parseInt(currentText.toString()));
+					} catch (NumberFormatException e) {
+					}
+				}
 			}
 		});
 
@@ -281,7 +286,12 @@ public class GymTrackerActivity extends Activity {
 
 			public void afterTextChanged(Editable s) {
 				Log.d(TAG, "D: writing " + currentText.toString());
-				tempFinalExData.addValue(fieldName, Double.parseDouble(currentText.toString()));
+				if (currentText.toString() != "") {
+					try {
+						tempFinalExData.addValue(fieldName, Double.parseDouble(currentText.toString()));
+					} catch (NumberFormatException e) {
+					}
+				}
 			}
 		});
 
