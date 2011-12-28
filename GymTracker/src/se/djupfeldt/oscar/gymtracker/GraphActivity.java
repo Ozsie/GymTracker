@@ -133,11 +133,12 @@ public class GraphActivity extends Activity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Log.d(GymTrackerActivity.TAG, ((Spinner) arg0).getSelectedItem().toString());
 				String name = ((Spinner) arg0).getSelectedItem().toString();
+				selectedField = name;
+				
 				String unit = " (" + currentExercise.getField(selectedField).getUnit() + ")";
 				Log.d(GymTrackerActivity.TAG, unit);
 				if (unit.equals(" ()"))
 					unit = "";
-				selectedField = name;
 				mRenderer.setYTitle(selectedField + unit);
 				populateDataset();
 				mChartView.repaint();
@@ -160,7 +161,6 @@ public class GraphActivity extends Activity {
 			mRenderer.setClickEnabled(true);
 			mRenderer.setSelectableBuffer(100);
 
-
 			mChartView.setOnClickListener(new View.OnClickListener() {
 
 				public void onClick(View v) {
@@ -172,46 +172,19 @@ public class GraphActivity extends Activity {
 					}
 				}
 			});
-			mChartView.setOnLongClickListener(new View.OnLongClickListener() {
-
-				public boolean onLongClick(View v) {
-					SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
-					if (seriesSelection == null) {
-						Toast.makeText(GraphActivity.this, "No chart element was long pressed",
-								Toast.LENGTH_SHORT);
-						return false; // no chart element was long pressed, so let something
-						// else handle the event
-					} else {
-						Toast.makeText(GraphActivity.this, "Chart element in series index "
-								+ seriesSelection.getSeriesIndex() + " data point index "
-								+ seriesSelection.getPointIndex() + " was long pressed", Toast.LENGTH_SHORT);
-						return true; // the element was long pressed - the event has been
-						// handled
-					}
-				}
-			});
 			mChartView.addZoomListener(new ZoomListener() {
 				public void zoomApplied(ZoomEvent e) {
-					String type = "out";
-					if (e.isZoomIn()) {
-						type = "in";
-					}
-					System.out.println("Zoom " + type + " rate " + e.getZoomRate());
 				}
 
 				public void zoomReset() {
-					System.out.println("Reset");
 				}
 			}, true, true);
 			mChartView.addPanListener(new PanListener() {
 				public void panApplied() {
-					System.out.println("New X range=[" + mRenderer.getXAxisMin() + ", " + mRenderer.getXAxisMax()
-							+ "], Y range=[" + mRenderer.getYAxisMax() + ", " + mRenderer.getYAxisMax() + "]");
 				}
 			});
 			layout.addView(mChartView, new LayoutParams(LayoutParams.FILL_PARENT,
 					LayoutParams.FILL_PARENT));
-			boolean enabled = mDataset.getSeriesCount() > 0;
 		} else {
 			mChartView.repaint();
 		}
